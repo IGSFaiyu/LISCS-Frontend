@@ -1,0 +1,50 @@
+[
+    {
+        "label": "Draft",
+        "value": 0
+    },
+    {
+        "label": "Submitted",
+        "value": 1
+    },
+    {
+        "label": "Vetting",
+        "value": 2
+    },
+    {
+        "label": "Select other B/Ds or Internal Departmental Members",
+        "value": 3
+    },
+    {
+        "label": "Data Completeness",
+        "value": 4
+    },
+    {
+        "label": "Resubmit with required supplement",
+        "value": 5
+    },
+    {
+        "label": "Follow up with applicants",
+        "value": 6
+    },
+    {
+        "label": "Prepare and draft notification letter",
+        "value": 7
+    },
+    {
+        "label": "Endorse and issue the notification",
+        "value": 8
+    },
+    {
+        "label": "Pending Application approval",
+        "value": 8
+    },
+    {
+        "label": "Approved",
+        "value": 9
+    },
+    {
+        "label": "Rejected",
+        "value": 10
+    }
+]

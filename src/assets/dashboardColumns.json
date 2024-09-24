@@ -1,0 +1,117 @@
+[
+    {
+        "title": "Application Number",
+        "value": "applicationNo",
+        "width": "200"
+    },
+    {
+        "title": "Contractor Name",
+        "value": "contractorName",
+        "width": "200"
+    },
+    {
+        "title": "Internal Status",
+        "value": "internalStatus",
+        "width": "200"
+    },
+    {
+        "title": "Last Update Date",
+        "value": "modifiedOn",
+        "width": "200"
+    },
+    {
+        "title": "Address",
+        "value": "address",
+        "width": "250"
+    },
+    {
+        "title": "Certificate Number",
+        "value": "certificateNo",
+        "width": "250"
+    },
+    {
+        "title": "Incorporation Number",
+        "value": "incorporationNo",
+        "width": "250"
+    },
+    {
+        "title": "Person In Charge Name",
+        "value": "personInChargeName",
+        "width": "250"
+    },
+    {
+        "title": "Person In Charge Title",
+        "value": "personInChargeTitle",
+        "width": "250"
+    },
+    {
+        "title": "Telephone Number",
+        "value": "telNo",
+        "width": "250"
+    },
+    {
+        "title": "Fax Number",
+        "value": "faxNo",
+        "width": "250"
+    },
+    {
+        "title": "Contract Number",
+        "value": "contractNo",
+        "width": "250"
+    },
+    {
+        "title": "Contract Name",
+        "value": "contractName",
+        "width": "250"
+    },
+    {
+        "title": "Work Site",
+        "value": "workSite",
+        "width": "250"
+    },
+    {
+        "title": "Commencement Date",
+        "value": "commencementDate",
+        "width": "250"
+    },
+    {
+        "title": "Target Completion Date",
+        "value": "targetCompletionDate",
+        "width": "250"
+    },
+    {
+        "title": "Contract Value",
+        "value": "contractValue",
+        "width": "250"
+    },
+    {
+        "title": "Reasons Importation Labour",
+        "value": "reasonsImportationLabour",
+        "width": "250"
+    },
+    {
+        "title": "Special Trades Contracts",
+        "value": "specialTradesContracts",
+        "width": "250"
+    },
+    {
+        "title": "Special Consideration Reason",
+        "value": "specialConsiderationReason",
+        "width": "250"
+    },
+    {
+        "title": "Residential Development Contracts",
+        "value": "residentialDevelopmentContracts",
+        "width": "250"
+    },
+    {
+        "title": "Commercial Development Contracts",
+        "value": "commercialDevelopmentContracts",
+        "width": "250"
+    },
+    {
+        "title": "Completeness Comment",
+        "value": "completenessComment",
+        "width": "250"
+    }
+]
