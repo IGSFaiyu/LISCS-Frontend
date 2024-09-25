@@ -350,3 +350,14 @@ export function completenessCommentForm(data: any) {
     },
   });
 }
+
+export function getDashboard(data: any) {
+  return request({
+    url: `${APPLICATION_BASE_URL}/dashboard_find`,
+    method: "post",
+    data,
+    // headers: {
+    //   "Content-Type": "multipart/form-data",
+    // },
+  });
+}

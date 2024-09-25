@@ -6,15 +6,6 @@
     <div style="border: 1px solid #ccc; padding: 10px; margin-bottom: 15px">
       Display Columns:
       <div>
-        <label
-          v-for="(item, index) in dashboardColumns.filter((el) =>
-            displayColumns.includes(el.value)
-          )"
-        >
-          {{ (index != 0 ? ", " : "") + item.title }}
-        </label>
-      </div>
-      <div>
         <tiny-base-select
           multiple
           filterable
@@ -56,7 +47,7 @@
                 @input="handleChange(item.value, form[item.value].val)"
               />
             </template>
-            <template v-else>
+            <template v-else-if="form[item.value].type != 'date'">
               <tiny-select
                 v-model="form[item.value].val"
                 :options="form[item.value].options"
@@ -64,6 +55,16 @@
                 @change="handleChange(item.value, form[item.value].val)"
               />
             </template>
+          </div>
+          <div v-else-if="dateCol.includes(item.value)">
+            {{
+              data.row[item.value]
+                ? timestampToTime(data.row[item.value], "YYYY-MM-DD hh:mm")
+                : ""
+            }}
+          </div>
+          <div v-else-if="item.value == 'internalStatus'">
+            {{ statusCode.filter((el) => el.value == data.row[item.value])[0].label }}
           </div>
           <div v-else>{{ data.row[item.value] }}</div>
         </template>
@@ -106,12 +107,7 @@ import {
 } from "@opentiny/vue";
 import router from "@/router";
 import ConfirmDelete from "@/components/confirmDeleteButton/index.vue";
-import {
-  getApplicationList,
-  getMaritimeList,
-  getAviationList,
-  getWorkflowStatusList,
-} from "@/api/index";
+import { getDashboard, getWorkflowStatusList } from "@/api/index";
 import { timestampToTime } from "@/utils/formatTime.js";
 import { tableComposable } from "@/composables/table.js";
 import { useRoute } from "vue-router";
@@ -133,12 +129,8 @@ const typeColumns = ref(
   dashboardColumns.filter((el) => displayColumns.value.includes(el.value))
 );
 const typeForm = ref({
-  contractorName: { type: "input", val: "" },
-  email: { type: "input", val: "" },
-  certificateNo: { type: "input", val: "" },
   internalStatus: { type: "select", val: "-1", options: [] },
 });
-
 const pager = ref({
   pageNum: 1,
   pageSize: 10,
@@ -147,6 +139,14 @@ const pager = ref({
 const allColumns = ref("applicationNo,contractorName,internalStatus,modifiedOn");
 const statusOptions = ref([]);
 const targetInternalStatus = ref("-1");
+
+const dateCol = ref(
+  dashboardColumns
+    .filter((el) => el.type == "date")
+    .map((item) => {
+      return item.value;
+    })
+);
 
 const sortColumn = ref("applicantId");
 const sortOrder = ref(0);
@@ -157,7 +157,6 @@ const form = computed(() => {
   } else {
     const obj = {
       ...typeForm.value,
-      applicationNumber: { type: "input", val: "" },
     };
     return obj;
   }
@@ -169,12 +168,14 @@ const columns = computed(() => {
 
 onMounted(async () => {
   pageTitle.value = "Dashboard";
+  await setColumnsType();
   await getWorkflowStatusData();
   await getData();
 });
 
 onActivated(async () => {
   pageTitle.value = "Dashboard";
+  await setColumnsType();
   await getWorkflowStatusData();
   await getData();
 });
@@ -196,37 +197,21 @@ const getData = async () => {
       size: pager.value.pageSize,
       sortColumn: sortColumn.value,
       sortOrder: sortOrder.value,
-      contractorName: form.value.contractorName.val,
-      email: form.value.email.val,
-      certificateNo: form.value.certificateNo.val,
-      internalStatus: form.value.internalStatus.val ? form.value.internalStatus.val : 0,
+      
+      // contractorName: form.value.contractorName.val,
+      // email: form.value.email.val,
+      // certificateNo: form.value.certificateNo.val,
+      // internalStatus: form.value.internalStatus.val
     };
-    if (pageTitle.value !== "Drafts") {
-      params.applicationNumber = form.value.applicationNumber.val;
+    for(let elem of Object.keys(form.value)){
+      if(form.value[elem].val) params[elem] = form.value[elem].val;
     }
-    let getListFunction =
-      pageTitle.value === "Drafts"
-        ? getApplicationList
-        : pageTitle.value === "Form 1"
-        ? getMaritimeList
-        : getAviationList;
+
+    let getListFunction = getDashboard;
 
     let { code, data, message } = await getListFunction(params);
-
     if (code === 200) {
-      const result = data.content.map((item) => {
-        return {
-          ...item,
-          modifiedOn: item.modifiedOn
-            ? timestampToTime(item.modifiedOn, "YYYY-MM-DD hh:mm")
-            : "",
-          applicant: item.surnameEng + (item.surnameEng ? "," : "") + item.givenNameEng,
-          internalStatus:
-            statusOptions.value.find(
-              (optionItem) => optionItem.value == item.internalStatus
-            )?.label ?? "Draft",
-        };
-      });
+      const result = data.content;
       tableData.value = [{}, ...result];
       pager.value.total = data.totalElements;
       (settingId.value = data.view.settingId),
@@ -305,7 +290,20 @@ const changeColumns = async (a) => {
   typeColumns.value = dashboardColumns.filter((el) =>
     displayColumns.value.includes(el.value)
   );
-  // await getData();
+  // let newTypeForm = {};
+  await setColumnsType();
+  await getData();
+};
+
+const setColumnsType = async () => {
+  for (let elem of typeColumns.value) {
+    if (elem.type) {
+      form.value[elem.value] = { type: elem.type, val: "" };
+      if (elem.type == "select" && elem.value == "internalStatus") {
+        await getWorkflowStatusData();
+      }
+    }
+  }
 };
 </script>
 

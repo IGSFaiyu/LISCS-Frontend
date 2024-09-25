@@ -129,7 +129,8 @@ export {
   uploadInternaleFileApi,
   getApplicantDetailApi,
   approvalAndRejectForm,
-  completenessCommentForm
+  completenessCommentForm,
+  getDashboard
 } from "./application";
 
 export {

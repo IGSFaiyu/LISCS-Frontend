@@ -2,116 +2,139 @@
     {
         "title": "Application Number",
         "value": "applicationNo",
-        "width": "200"
+        "width": "200",
+        "type": "input"
     },
     {
         "title": "Contractor Name",
         "value": "contractorName",
-        "width": "200"
+        "width": "200",
+        "type": "input"
     },
     {
         "title": "Internal Status",
         "value": "internalStatus",
-        "width": "200"
+        "width": "200",
+        "type": "select"
     },
     {
         "title": "Last Update Date",
         "value": "modifiedOn",
-        "width": "200"
+        "width": "200",
+        "type": "date"
     },
     {
         "title": "Address",
         "value": "address",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Certificate Number",
         "value": "certificateNo",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Incorporation Number",
         "value": "incorporationNo",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Person In Charge Name",
         "value": "personInChargeName",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Person In Charge Title",
         "value": "personInChargeTitle",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Telephone Number",
         "value": "telNo",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Fax Number",
         "value": "faxNo",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Contract Number",
         "value": "contractNo",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Contract Name",
         "value": "contractName",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Work Site",
         "value": "workSite",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Commencement Date",
         "value": "commencementDate",
-        "width": "250"
+        "width": "250",
+        "type": "date"
     },
     {
         "title": "Target Completion Date",
         "value": "targetCompletionDate",
-        "width": "250"
+        "width": "250",
+        "type": "date"
     },
     {
         "title": "Contract Value",
         "value": "contractValue",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Reasons Importation Labour",
         "value": "reasonsImportationLabour",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Special Trades Contracts",
         "value": "specialTradesContracts",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Special Consideration Reason",
         "value": "specialConsiderationReason",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Residential Development Contracts",
         "value": "residentialDevelopmentContracts",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Commercial Development Contracts",
         "value": "commercialDevelopmentContracts",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     },
     {
         "title": "Completeness Comment",
         "value": "completenessComment",
-        "width": "250"
+        "width": "250",
+        "type": "input"
     }
 ]
