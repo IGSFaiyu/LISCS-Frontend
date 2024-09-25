@@ -2,6 +2,7 @@ import request from "@/utils/request";
 import testData from "../assets/testData.json";
 import statusCode from "../assets/statusCode.json";
 import submitType from "../assets/submitType.json";
+import { random } from "lodash";
 const APPLICATION_BASE_URL = "/application";
 const FILE_BASE_URL = "/application/file";
 
@@ -21,11 +22,18 @@ export function GetJobNature(data: any) {
 }
 
 export async function saveNewApplication(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/save_application`,
-    method: "post",
-    data,
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/save_application`,
+  //   method: "post",
+  //   data,
+  // });
+  return {
+    "code": 200,
+    "data": {
+      applicationId: Math.floor(Math.random() * 999)
+    },
+    message: "Success"
+  }
 }
 
 export function saveNewCourseApplication(data: any) {
@@ -37,11 +45,18 @@ export function saveNewCourseApplication(data: any) {
 }
 
 export function submitNewApplication(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/save/submit`,
-    method: "post",
-    data,
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/save/submit`,
+  //   method: "post",
+  //   data,
+  // });
+  return {
+    "code": 200,
+    "data": {
+      applicationId: Math.floor(Math.random() * 999)
+    },
+    message: "Success"
+  }
 }
 
 export function saveHkic(data: any) {
@@ -367,25 +382,33 @@ export function getApplicantDetailApi(data: any) {
 }
 
 export function approvalAndRejectForm(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/approval`,
-    method: "post",
-    data,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/approval`,
+  //   method: "post",
+  //   data,
+  //   headers: {
+  //     "Content-Type": "multipart/form-data",
+  //   },
+  // });
+  return {
+    "code": 200,
+    message: "Success"
+  }
 }
 
 export function completenessCommentForm(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/completenessComment`,
-    method: "post",
-    data,
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/completenessComment`,
+  //   method: "post",
+  //   data,
+  //   headers: {
+  //     "Content-Type": "multipart/form-data",
+  //   },
+  // });
+  return {
+    "code": 200,
+    message: "Success"
+  }
 }
 
 export function getDashboard(data: any) {
@@ -398,7 +421,7 @@ export function getDashboard(data: any) {
   //   // },
   // });
   let filterAry: any = getfliterAry(data);
-  let result = testData.filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
+  let result = sortingData(testData, data.sortColumn, data.sortOrder).filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
   let pageable = getPageable(data, result);
   return {
     "code": 200,
@@ -411,7 +434,7 @@ export function getDashboard(data: any) {
 
 export function getfliterAry(data: any) {
   let filterAry: any = [];
-  let notFilter = ["page", "size", "sortColumn", "sortOrder"];
+  let notFilter = ["page", "size", "sortColumn", "sortOrder", "specStatus"];
   for (let elem of Object.keys(data)) {
     if (!notFilter.includes(elem)) {
       if (["internalStatus", "submitType"].includes(elem)) {
@@ -419,6 +442,8 @@ export function getfliterAry(data: any) {
       } else {
         filterAry.push(`(!'${data[elem]}' || el['${elem}']?.toLowerCase().includes('${data[elem]?.toLowerCase()}'))`);
       }
+    }else if(elem == "specStatus"){
+      filterAry.push(`([${data[elem]}].includes(el['internalStatus']))`);
     }
   }
   return filterAry;

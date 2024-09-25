@@ -12,8 +12,8 @@ import "@mdi/font/css/materialdesignicons.min.css";
 import "@/styles/index.scss";
 import "uno.css";
 import "animate.css";
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 const app = createApp(App);
 // 全局注册 自定义指令(directive)

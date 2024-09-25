@@ -36,10 +36,6 @@
         "value": 8
     },
     {
-        "label": "Pending Application approval",
-        "value": 8
-    },
-    {
         "label": "Approved",
         "value": 9
     },

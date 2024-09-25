@@ -6,3 +6,10 @@ export function filterDBCol(data) {
     }
     return obj;
 }
+
+export function sortingData(data, name, isAsc) {
+    return data.sort(function (a, b) {
+        return isAsc ? (a[name] - b[name]) : (b[name] - a[name]);
+    });
+}
+

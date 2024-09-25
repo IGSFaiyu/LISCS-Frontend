@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container">
+  <div>
     <Choose v-if="type === 'new' && !isSaved" @changeType="changeType" />
     <div v-else>
       <div class="page-title" v-if="isSaved">
@@ -9,15 +9,15 @@
           }}</span
         >
         <span class="title">{{
-          type === "Labour Importation Scheme for the Construction Sector Application Form" ? "Labour Importation Scheme for the Construction Sector Application Form" : "(b)	Annex I – Particulars of Employer(s) of the Imported Labour "
+          type ===
+          "Labour Importation Scheme for the Construction Sector Application Form"
+            ? "Labour Importation Scheme for the Construction Sector Application Form"
+            : "(b)	Annex I – Particulars of Employer(s) of the Imported Labour "
         }}</span>
       </div>
       <div class="page-form">
         <el-divider v-if="isSaved && activeName === 'internalAttachments'" />
-        <section
-          class="form-info"
-          v-if="isSaved && activeName === 'internalAttachments'"
-        >
+        <section class="form-info" v-if="isSaved && activeName === 'internalAttachments'">
           <div v-for="item in info1" :key="item.id" class="form-info-content">
             <span class="form-info-content-label">{{
               item.name !== "" ? item.name + " :" : ""
@@ -70,6 +70,7 @@ import Course from "./components/course.vue";
 import Choose from "./components/choose.vue";
 import Attachment from "./components/attachment.vue";
 import { getApplicationInfo, getApplicantDetailApi } from "@/api/index";
+import router from "@/router";
 
 const info1 = ref([
   {
@@ -222,8 +223,15 @@ const fillByOCR = () => {
 
 const changeType = (params) => {
   // console.log(params, "changeType");
-  if (params) type.value = params;
-  else type.value = "new";
+  if(params == "Upload PDF Form"){
+    router.push({
+      path: "/uploadPDFForm"
+    })
+  }else if (params){
+    type.value = params;
+  }else{
+    type.value = "new";
+  }
 };
 
 const changeIsSaved = (saved, applicationId) => {

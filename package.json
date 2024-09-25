@@ -45,6 +45,7 @@
     "@mdi/font": "^7.4.47",
     "@opentiny/unplugin-tiny-vue": "^0.0.2",
     "@opentiny/vue": "^3.16.0",
+    "@opentiny/vue-icon": "^3.18.0",
     "@opentiny/vue-locale": "^3.18.0",
     "@vue-office/pdf": "^2.0.2",
     "@vueuse/core": "^10.9.0",

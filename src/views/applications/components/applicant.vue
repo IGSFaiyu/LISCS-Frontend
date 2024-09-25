@@ -295,7 +295,7 @@
         style="margin-top: 15px"
         v-if="form.internalStatus == 0"
       >
-        <button @click="autoFill()">Testing</button>
+        <!-- <button @click="autoFill()">Testing</button> -->
         <el-button type="primary" @click="clickButton('save')" class="default-button"
           >Save</el-button
         >
@@ -679,11 +679,6 @@ const handleSave = async (type) => {
     console.log(form.value[elem]);
   }
   try {
-    // let obj = {};
-    // Reflect.ownKeys(form.value).forEach((item) => {
-      //   if (form.value[item]) obj[item] = form.value[item];
-      //   else obj[item] = "";
-      // });
     const params = common.filterDBCol(form.value);
 
     const { code, data, message } =
@@ -704,6 +699,7 @@ const handleSave = async (type) => {
       })
     } else ElMessage.error(message);
   } catch (e) {
+    ElMessage.error('message');
     console.log(e);
   }
 };
