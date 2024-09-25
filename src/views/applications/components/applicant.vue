@@ -414,7 +414,7 @@ const loading = ref(false);
 
 const form = ref({
   id: null,
-  applicationType: "Form 1",
+  applicationType: "Labour Importation Scheme for the Construction Sector Application Form",
   internalStatus: 0,
   applicationNo: "",
   contractorName: "",
@@ -647,25 +647,11 @@ watch(applicationType, (newV) => {
 });
 
 const getBank = async () => {
-  try {
-    const { code, data, message } = await getApplicationBank();
-    if (code === 200) bankList.value = data;
-    else ElMessage.error(message);
-  } catch (err) {
-    console.log(err);
-  }
+  bankList.value = [];
 };
 
 async function getJobNature() {
-  try {
-    const category = type.value === "Form 1" ? "Form 1" : "Form 2";
-    let { code, data, message } = await GetJobNature(category);
-    if (code === 200) {
-      options.value = data;
-    } else ElMessage.error(message);
-  } catch (err) {
-    console.log(err);
-  }
+  options.value = [];
 }
 
 const clickButton = (type) => {
@@ -960,7 +946,7 @@ const autoFill = ()=>{
 
   form.value.internalStatus = 0;
   form.value.isOperatingLicenseValid = false;
-  form.value.applicationType = "Form 1";
+  form.value.applicationType = "Labour Importation Scheme for the Construction Sector Application Form";
   form.value.contractValue = "HK$1 billion or more";
   form.value.commencementDate = new Date().toISOString().slice(0,10);
   form.value.targetCompletionDate = new Date().toISOString().slice(0,10);

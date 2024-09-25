@@ -21,7 +21,14 @@
         "title": "Last Update Date",
         "value": "modifiedOn",
         "width": "200",
-        "type": "date"
+        "type": "date",
+        "format": "YYYY-MM-DD hh:mm"
+    },
+    {
+        "title": "Submit Type",
+        "value": "submitType",
+        "width": "200",
+        "type": "select"
     },
     {
         "title": "Address",
@@ -87,13 +94,15 @@
         "title": "Commencement Date",
         "value": "commencementDate",
         "width": "250",
-        "type": "date"
+        "type": "date",
+        "format": "YYYY-MM-DD"
     },
     {
         "title": "Target Completion Date",
         "value": "targetCompletionDate",
         "width": "250",
-        "type": "date"
+        "type": "date",
+        "format": "YYYY-MM-DD"
     },
     {
         "title": "Contract Value",

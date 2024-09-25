@@ -1,8 +1,9 @@
 [
     {
-        "id": 1,
+        "applicationId": 1,
         "internalStatus": 1,
-        "applicantionNo": "100",
+        "applicationNo": "CSS24Q3001",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 1",
         "address": "address 1",
         "certificateNo": "certificateNo 1",
@@ -31,12 +32,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 0
     },
     {
-        "id": 2,
+        "applicationId": 2,
         "internalStatus": 2,
-        "applicantionNo": "102",
+        "applicationNo": "CSS24Q3002",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 2",
         "address": "address 2",
         "certificateNo": "certificateNo 2",
@@ -65,12 +68,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 1
     },
     {
-        "id": 3,
+        "applicationId": 3,
         "internalStatus": 3,
-        "applicantionNo": "103",
+        "applicationNo": "CSS24Q3003",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 3",
         "address": "address 3",
         "certificateNo": "certificateNo 3",
@@ -99,12 +104,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 2
     },
     {
-        "id": 4,
+        "applicationId": 4,
         "internalStatus": 4,
-        "applicantionNo": "104",
+        "applicationNo": "CSS24Q3004",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 4",
         "address": "address 4",
         "certificateNo": "certificateNo 4",
@@ -133,12 +140,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 0
     },
     {
-        "id": 5,
+        "applicationId": 5,
         "internalStatus": 5,
-        "applicantionNo": "105",
+        "applicationNo": "CSS24Q3005",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 5",
         "address": "address 5",
         "certificateNo": "certificateNo 5",
@@ -167,12 +176,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 1
     },
     {
-        "id": 6,
+        "applicationId": 6,
         "internalStatus": 6,
-        "applicantionNo": "106",
+        "applicationNo": "CSS24Q3006",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 6",
         "address": "address 6",
         "certificateNo": "certificateNo 6",
@@ -201,12 +212,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 2
     },
     {
-        "id": 7,
+        "applicationId": 7,
         "internalStatus": 7,
-        "applicantionNo": "107",
+        "applicationNo": "CSS24Q3007",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 7",
         "address": "address 7",
         "certificateNo": "certificateNo 7",
@@ -235,12 +248,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 0
     },
     {
-        "id": 8,
+        "applicationId": 8,
         "internalStatus": 8,
-        "applicantionNo": "108",
+        "applicationNo": "CSS24Q3008",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 8",
         "address": "address 8",
         "certificateNo": "certificateNo 8",
@@ -269,12 +284,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 1
     },
     {
-        "id": 9,
+        "applicationId": 9,
         "internalStatus": 9,
-        "applicantionNo": "109",
+        "applicationNo": "CSS24Q3009",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 9",
         "address": "address 9",
         "certificateNo": "certificateNo 9",
@@ -303,12 +320,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 2
     },
     {
-        "id": 10,
+        "applicationId": 10,
         "internalStatus": 1,
-        "applicantionNo": "110",
+        "applicationNo": "CSS24Q3010",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 10",
         "address": "address 10",
         "certificateNo": "certificateNo 10",
@@ -337,12 +356,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 0
     },
     {
-        "id": 11,
+        "applicationId": 11,
         "internalStatus": 0,
-        "applicantionNo": "111",
+        "applicationNo": "",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 11",
         "address": "address 11",
         "certificateNo": "certificateNo 11",
@@ -371,12 +392,14 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 1
     },
     {
-        "id": 12,
+        "applicationId": 12,
         "internalStatus": 0,
-        "applicantionNo": "112",
+        "applicationNo": "",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 12",
         "address": "address 12",
         "certificateNo": "certificateNo 12",
@@ -405,6 +428,7 @@
         "createdBy": 0,
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
-        "modifiedOn": "2024-05-30T09:50:06.000+00:00"
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 2
     }
 ]

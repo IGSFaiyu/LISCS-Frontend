@@ -4,22 +4,14 @@
     <div v-else>
       <div class="page-title" v-if="isSaved">
         <span class="title"
-          >Application No.：{{
+          >Application ID.：{{
             currentApplicationId || history?.state?.applicationId
           }}</span
         >
         <span class="title">{{
-          type === "Form 1" ? "Form 1" : "Form 2"
+          type === "Labour Importation Scheme for the Construction Sector Application Form" ? "Labour Importation Scheme for the Construction Sector Application Form" : "(b)	Annex I – Particulars of Employer(s) of the Imported Labour "
         }}</span>
       </div>
-      <el-button
-        type="primary"
-        @click="handleAdd"
-        class="default-button orange"
-        v-if="isSaved"
-      >
-        COPY TO NEW APPLICATION
-      </el-button>
       <div class="page-form">
         <el-divider v-if="isSaved && activeName === 'internalAttachments'" />
         <section
@@ -130,21 +122,9 @@ const info2 = ref([
   },
   {
     id: "7",
-    name: "No. of Day for Processing",
+    name: "submitType",
     value: "",
-    label: "dayProcessing",
-  },
-  {
-    id: "8",
-    name: "Date of Application",
-    value: "",
-    label: "dateApplication",
-  },
-  {
-    id: "9",
-    name: "Date of Application Closed",
-    value: "",
-    label: "dateApplicationClose",
+    label: "submitType",
   },
   {
     id: "10",

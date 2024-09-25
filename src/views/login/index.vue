@@ -100,7 +100,7 @@ const loginRules = computed(() => {
 const route = useRoute();
 function handleLogin() {
   loading.value = true;
-  loginFormRef.value.validate((valid: boolean) => {
+  loginFormRef.value.validate(async (valid: boolean) => {
     if (valid) {
       const query: LocationQuery = route.query;
       const redirect = (query.redirect as LocationQueryValue) ?? "/";
@@ -110,47 +110,26 @@ function handleLogin() {
         }
         return acc;
       }, {});
-      loginApi({ ...loginData.value })
-        .then((result) => {
-          let code = result.code,
-            data = result.data,
-            message = result.message;
-          if (code === 200) {
-            sessionStorage.setItem(TOKEN_KEY, data.Token);
-            sessionStorage.setItem(USEER_INFO_KEY, JSON.stringify(data));
-            router.push({ path: "/", query: otherQueryParams });
-            console.log("Login Success");
-            ElMessage.success(message);
-          } else {
-            ElMessage.error(message);
-            console.log("Error fetching data:", message);
-          }
-        })
-        .catch((err) => {
-          loading.value = false;
-          ElMessage.error(err);
-          console.log("Error fetching data:", err);
-        });
-      // try {
-      //   let result = loginApi(loginData.value);
-      //   let code = result.code,
-      //     data = result.data,
-      //     message = result.message;
-      //   if (code === 200) {
-      //     sessionStorage.setItem(TOKEN_KEY, data.Token);
-      //     sessionStorage.setItem(USEER_INFO_KEY, JSON.stringify(data));
-      //     router.push({ path: "/", query: otherQueryParams });
-      //     console.log("Login Success");
-      //     ElMessage.success(message);
-      //   } else {
-      //     ElMessage.error(message);
-      //     console.log("Error fetching data:", message);
-      //   }
-      // } catch (err) {
-      //   loading.value = false;
-      //   ElMessage.error(err);
-      //   console.log("Error fetching data:", err);
-      // }
+      try {
+        let result = await testloginApi({ ...loginData.value });
+        let code = result.code,
+          data = result.data,
+          message = result.message;
+        if (code === 200) {
+          sessionStorage.setItem(TOKEN_KEY, data.Token);
+          sessionStorage.setItem(USEER_INFO_KEY, JSON.stringify(data));
+          router.push({ path: "/", query: otherQueryParams });
+          console.log("Login Success");
+          ElMessage.success(message);
+        } else {
+          ElMessage.error(message);
+          console.log("Error fetching data:", message);
+        }
+      } catch (err) {
+        loading.value = false;
+        ElMessage.error(err);
+        console.log("Error fetching data:", err);
+      }
     }
   });
 }

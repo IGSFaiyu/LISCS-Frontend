@@ -5,18 +5,18 @@
       <div
         class="new-button"
         style="margin-right: 20px"
-        @click="handleSelect('Form 1')"
+        @click="handleSelect('Labour Importation Scheme for the Construction Sector Application Form')"
       >
         <div>
           <img src="@/assets/images/Maritime.png" alt />
         </div>
-        {{ "Form 1" }}
+        {{ "Labour Importation Scheme for the Construction Sector Application Form" }}
       </div>
-      <div class="new-button" @click="handleSelect('Form 2')">
+      <div class="new-button" @click="handleSelect('(b)	Annex I – Particulars of Employer(s) of the Imported Labour ')">
         <div>
           <img src="@/assets/images/Aviation.png" alt />
         </div>
-        {{ "Form 2" }}
+        {{ "(b)	Annex I – Particulars of Employer(s) of the Imported Labour " }}
       </div>
     </div>
   </div>

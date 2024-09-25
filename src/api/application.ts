@@ -1,4 +1,7 @@
 import request from "@/utils/request";
+import testData from "../assets/testData.json";
+import statusCode from "../assets/statusCode.json";
+import submitType from "../assets/submitType.json";
 const APPLICATION_BASE_URL = "/application";
 const FILE_BASE_URL = "/application/file";
 
@@ -173,17 +176,37 @@ export function getCurrency() {
 }
 
 export function getApplicationInfo(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/application_detail/${data}`,
-    method: "get",
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/application_detail/${data}`,
+  //   method: "get",
+  // });
+  let result = testData.filter(el => el.applicationId == data)[0];
+  let status = statusCode.filter(el => el.value == result.internalStatus)[0];
+  return {
+    "code": 200,
+    "data": {
+      "internalStatus": status.label,
+      "submitType": submitType.filter(el => el.value == result.submitType)[0].label,
+      "workflowState": result.internalStatus,
+      "applicationNo": result.applicationNo ? result.applicationNo : "N/A",
+      "externalStatus": status.label,
+      "applicationId": result.applicationId
+    },
+    "message": "success"
+  }
 }
 
 export function getPersonalInfoByApplicationId(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/get_application/${data}`,
-    method: "get",
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/get_application/${data}`,
+  //   method: "get",
+  // });
+  let result = testData.filter(el => el.applicationId == data)[0];
+  return {
+    "code": 200,
+    "data": result,
+    "message": "application found"
+  }
 }
 
 export function getPersonalInfoByApplicantId(data: any) {
@@ -323,10 +346,24 @@ export function uploadInternaleFileApi(data: any) {
 }
 
 export function getApplicantDetailApi(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/applicant_detail/${data}`,
-    method: "get",
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/applicant_detail/${data}`,
+  //   method: "get",
+  // });
+
+  let result = testData.filter(el => el.applicationId == data)[0];
+  return {
+    "code": 200,
+    "data": {
+      "balance": 0.0,
+      "claimAmount": 0.0,
+      "totalClaimableAmount": 0.0,
+      "applicantName": result.contractorName,
+      "applicantId": result.applicationId,
+      "HKID": ""
+    },
+    "message": "success"
+  }
 }
 
 export function approvalAndRejectForm(data: any) {
@@ -352,12 +389,66 @@ export function completenessCommentForm(data: any) {
 }
 
 export function getDashboard(data: any) {
-  return request({
-    url: `${APPLICATION_BASE_URL}/dashboard_find`,
-    method: "post",
-    data,
-    // headers: {
-    //   "Content-Type": "multipart/form-data",
-    // },
-  });
+  // return request({
+  //   url: `${APPLICATION_BASE_URL}/dashboard_find`,
+  //   method: "post",
+  //   data,
+  //   // headers: {
+  //   //   "Content-Type": "multipart/form-data",
+  //   // },
+  // });
+  let filterAry: any = getfliterAry(data);
+  let result = testData.filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
+  let pageable = getPageable(data, result);
+  return {
+    "code": 200,
+    "data": {
+      ...pageable,
+      "content": result.slice(data.page * data.size, (data.page + 1) * data.size)
+    }
+  }
+}
+
+export function getfliterAry(data: any) {
+  let filterAry: any = [];
+  let notFilter = ["page", "size", "sortColumn", "sortOrder"];
+  for (let elem of Object.keys(data)) {
+    if (!notFilter.includes(elem)) {
+      if (["internalStatus", "submitType"].includes(elem)) {
+        filterAry.push(`(${data[elem]} == -1 || el['${elem}'] == ${data[elem]})`);
+      } else {
+        filterAry.push(`(!'${data[elem]}' || el['${elem}']?.toLowerCase().includes('${data[elem]?.toLowerCase()}'))`);
+      }
+    }
+  }
+  return filterAry;
+}
+
+export function getPageable(data: any, result: any) {
+  return {
+    "last": Math.ceil(result.length / data.size) == data.size + 1,
+    "size": data.size,
+    "numberOfElements": result.length,
+    "totalPages": Math.ceil(testData.length / data.size),
+    "pageable": {
+      "paged": true,
+      "pageNumber": data.page,
+      "offset": result.length - (result.length - (data.page * data.size)),
+      "pageSize": data.size,
+      "unpaged": false,
+      "sort": {
+        "unsorted": false,
+        "sorted": true,
+        "empty": false
+      }
+    },
+    "sort": {
+      "unsorted": false,
+      "sorted": true,
+      "empty": false
+    },
+    "first": false,
+    "totalElements": result.length,
+    "empty": false
+  };
 }

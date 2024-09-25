@@ -1,0 +1,14 @@
+[
+    {
+        "label": "PDF",
+        "value": 0
+    },
+    {
+        "label": "CEFS",
+        "value": 1
+    },
+    {
+        "label": "LISCS",
+        "value": 2
+    }
+]

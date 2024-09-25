@@ -59,12 +59,15 @@
           <div v-else-if="dateCol.includes(item.value)">
             {{
               data.row[item.value]
-                ? timestampToTime(data.row[item.value], "YYYY-MM-DD hh:mm")
+                ? timestampToTime(new Date(data.row[item.value]), item.format)
                 : ""
             }}
           </div>
           <div v-else-if="item.value == 'internalStatus'">
             {{ statusCode.filter((el) => el.value == data.row[item.value])[0].label }}
+          </div>
+          <div v-else-if="item.value == 'submitType'">
+            {{ submitType.filter((el) => el.value == data.row[item.value])[0].label }}
           </div>
           <div v-else>{{ data.row[item.value] }}</div>
         </template>
@@ -113,6 +116,7 @@ import { tableComposable } from "@/composables/table.js";
 import { useRoute } from "vue-router";
 import statusCode from "../../../assets/statusCode.json";
 import dashboardColumns from "../../../assets/dashboardColumns.json";
+import submitType from "../../../assets/submitType.json";
 const route = useRoute();
 
 const { colGridRef, settingId, tableName, hideBoolCol, saveSetting } = tableComposable();
@@ -152,14 +156,10 @@ const sortColumn = ref("applicantId");
 const sortOrder = ref(0);
 
 const form = computed(() => {
-  if (route.name === "Drafts") {
-    return typeForm.value;
-  } else {
-    const obj = {
-      ...typeForm.value,
-    };
-    return obj;
-  }
+  const obj = {
+    ...typeForm.value,
+  };
+  return obj;
 });
 
 const columns = computed(() => {
@@ -197,14 +197,11 @@ const getData = async () => {
       size: pager.value.pageSize,
       sortColumn: sortColumn.value,
       sortOrder: sortOrder.value,
-      
-      // contractorName: form.value.contractorName.val,
-      // email: form.value.email.val,
-      // certificateNo: form.value.certificateNo.val,
-      // internalStatus: form.value.internalStatus.val
     };
-    for(let elem of Object.keys(form.value)){
-      if(form.value[elem].val) params[elem] = form.value[elem].val;
+    for (let elem of Object.keys(form.value)) {
+      console.log(elem);
+      if (form.value[elem].val || form.value[elem].val == 0)
+        params[elem] = form.value[elem].val;
     }
 
     let getListFunction = getDashboard;
@@ -249,7 +246,7 @@ async function handleReset() {
   form.value.contractorName.val = "";
   form.value.email.val = "";
   form.value.certificateNo.val = "";
-  form.value.internalStatus.val = "";
+  form.value.internalStatus.val = -1;
 
   if (pageTitle.value !== "Drafts") {
     form.value.applicationNumber = { type: "input", val: "" };
@@ -298,9 +295,17 @@ const changeColumns = async (a) => {
 const setColumnsType = async () => {
   for (let elem of typeColumns.value) {
     if (elem.type) {
-      form.value[elem.value] = { type: elem.type, val: "" };
-      if (elem.type == "select" && elem.value == "internalStatus") {
-        await getWorkflowStatusData();
+      if (!elem.type == "select") {
+        form.value[elem.value] = { type: elem.type, val: "" };
+      } else if (elem.type == "select" && elem.value == "submitType") {
+        form.value[elem.value] = {
+          type: "select",
+          val: "-1",
+          options: [
+            { label: "All", value: "-1" },
+            ...submitType
+          ]
+        }
       }
     }
   }
