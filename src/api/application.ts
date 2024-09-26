@@ -422,6 +422,9 @@ export function getDashboard(data: any) {
   // });
   let filterAry: any = getfliterAry(data);
   let result = sortingData(testData, data.sortColumn, data.sortOrder).filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
+  if (data.sortColumn == "applicantId"){
+    result = sortingData(result, "submitVersion", false);
+  }
   let pageable = getPageable(data, result);
   return {
     "code": 200,

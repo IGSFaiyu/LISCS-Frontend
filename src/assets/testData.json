@@ -2,6 +2,8 @@
     {
         "applicationId": 1,
         "internalStatus": 1,
+        "submitVersion": 1,
+        "email": "email 1",
         "applicationNo": "CSS24Q3001",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 1",
@@ -33,11 +35,30 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 0
+        "submitType": 0,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 2,
         "internalStatus": 2,
+        "submitVersion": 1,
+        "email": "email 2",
         "applicationNo": "CSS24Q3002",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 2",
@@ -69,11 +90,37 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 1
+        "submitType": 1,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 3,
         "internalStatus": 3,
+        "submitVersion": 1,
+        "email": "email 3",
         "applicationNo": "CSS24Q3003",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 3",
@@ -105,11 +152,37 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 2
+        "submitType": 2,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 4,
         "internalStatus": 4,
+        "submitVersion": 1,
+        "email": "email 4",
         "applicationNo": "CSS24Q3004",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 4",
@@ -141,11 +214,44 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 0
+        "submitType": 0,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 5,
         "internalStatus": 5,
+        "submitVersion": 1,
+        "email": "email 5",
         "applicationNo": "CSS24Q3005",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 5",
@@ -177,11 +283,51 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 1
+        "submitType": 1,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            },
+            {
+                "userName": "User 3",
+                "remark": "Reject reason is test",
+                "display": "Form has been data completeness by User 3",
+                "action": "Data Completeness",
+                "time": "2024-05-30T09:54:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 6,
         "internalStatus": 6,
+        "submitVersion": 1,
+        "email": "email 6",
         "applicationNo": "CSS24Q3006",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 6",
@@ -213,11 +359,51 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 2
+        "submitType": 2,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            },
+            {
+                "userName": "User 3",
+                "remark": "test",
+                "display": "Form has been data completeness by User 3",
+                "action": "Data Completeness",
+                "time": "2024-05-30T09:54:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 7,
         "internalStatus": 7,
+        "submitVersion": 1,
+        "email": "email 7",
         "applicationNo": "CSS24Q3007",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 7",
@@ -249,11 +435,58 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 0
+        "submitType": 0,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            },
+            {
+                "userName": "User 3",
+                "remark": "Test",
+                "display": "Form has been data completeness by User 3",
+                "action": "Data Completeness",
+                "time": "2024-05-30T09:54:06.000+00:00"
+            },
+            {
+                "userName": "User 4",
+                "remark": "Test",
+                "display": "Form has been follow up with applicants by User 4",
+                "action": "Follow up with applicants",
+                "time": "2024-05-30T09:55:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 8,
         "internalStatus": 8,
+        "submitVersion": 1,
+        "email": "email 8",
         "applicationNo": "CSS24Q3008",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 8",
@@ -285,11 +518,65 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 1
+        "submitType": 1,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            },
+            {
+                "userName": "User 3",
+                "remark": "Test",
+                "display": "Form has been data completeness by User 3",
+                "action": "Data Completeness",
+                "time": "2024-05-30T09:54:06.000+00:00"
+            },
+            {
+                "userName": "User 4",
+                "remark": "Test",
+                "display": "Form has been follow up with applicants by User 4",
+                "action": "Follow up with applicants",
+                "time": "2024-05-30T09:55:06.000+00:00"
+            },
+            {
+                "userName": "User 5",
+                "remark": "Test",
+                "display": "Form has been prepare and draft notification letter by User 5",
+                "action": "Prepare and draft notification letter",
+                "time": "2024-05-30T09:56:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 9,
         "internalStatus": 9,
+        "submitVersion": 1,
+        "email": "email 9",
         "applicationNo": "CSS24Q3009",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 9",
@@ -321,11 +608,72 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 2
+        "submitType": 2,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            },
+            {
+                "userName": "User 3",
+                "remark": "Test",
+                "display": "Form has been data completeness by User 3",
+                "action": "Data Completeness",
+                "time": "2024-05-30T09:54:06.000+00:00"
+            },
+            {
+                "userName": "User 4",
+                "remark": "Test",
+                "display": "Form has been follow up with applicants by User 4",
+                "action": "Follow up with applicants",
+                "time": "2024-05-30T09:55:06.000+00:00"
+            },
+            {
+                "userName": "User 5",
+                "remark": "Test",
+                "display": "Form has been prepare and draft notification letter by User 5",
+                "action": "Prepare and draft notification letter",
+                "time": "2024-05-30T09:56:06.000+00:00"
+            },
+            {
+                "userName": "User 6",
+                "remark": "Test",
+                "display": "Form has been endorse and issue the notification by User 6",
+                "action": "Endorse and issue the notification",
+                "time": "2024-05-30T09:56:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 10,
         "internalStatus": 1,
+        "submitVersion": 1,
+        "email": "email 10",
         "applicationNo": "CSS24Q3010",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 10",
@@ -357,11 +705,23 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 0
+        "submitType": 0,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 11,
         "internalStatus": 0,
+        "submitVersion": 1,
+        "email": "email 11",
         "applicationNo": "",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 11",
@@ -393,11 +753,23 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 1
+        "submitType": 1,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            }
+        ]
     },
     {
         "applicationId": 12,
         "internalStatus": 0,
+        "submitVersion": 1,
+        "email": "email 12",
         "applicationNo": "",
         "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
         "contractorName": "contractorName 12",
@@ -429,6 +801,106 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 2
+        "submitType": 2,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            }
+        ]
+    },
+    {
+        "applicationId": 13,
+        "internalStatus": 2,
+        "submitVersion": 2,
+        "email": "email 13",
+        "applicationNo": "CSS24Q3013",
+        "applicationType": "Labour Importation Scheme for the Construction Sector Application Form",
+        "contractorName": "contractorName 13",
+        "address": "address 13",
+        "certificateNo": "certificateNo 13",
+        "incorporationNo": "incorporationNo 13",
+        "personInChargeName": "personInChargeName 13",
+        "personInChargeTitle": "personInChargeTitle 13",
+        "telNo": "telNo 13",
+        "faxNo": "faxNo 13",
+        "previousApplicationNo1": "previousApplicationNo1 13",
+        "previousApplicationNo2": "previousApplicationNo2 13",
+        "previousApplicationNo3": "previousApplicationNo3 13",
+        "contractNo": "contractNo 13",
+        "contractName": "contractName 13",
+        "workSite": "workSite 13",
+        "commencementDate": "2024-09-01",
+        "targetCompletionDate": "2024-06-01",
+        "contractValue": "Less than HK$1 billio13",
+        "contactPersonDO": "contactPersonDO 13",
+        "contactPersonDOTelEmail": "contactPersonDOTelEmail 13",
+        "reasonsImportationLabour": "reasonsImportationLabour 13",
+        "specialTradesContracts": "specialTradesContracts 13",
+        "specialConsiderationReason": "specialConsiderationReason 13",
+        "residentialDevelopmentContracts": "residentialDevelopmentContracts 13",
+        "commercialDevelopmentContracts": "commercialDevelopmentContracts 13",
+        "deleted": false,
+        "createdBy": 0,
+        "createdOn": "2024-05-30T09:50:06.000+00:00",
+        "modifiedBy": 0,
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "submitType": 1,
+        "file": "",
+        "history": [
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:50:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been save by User 1",
+                "action": "Save",
+                "time": "2024-05-30T09:51:06.000+00:00"
+            },
+            {
+                "userName": "User 1",
+                "remark": "test",
+                "display": "Form has been submit by User 1",
+                "action": "Submit",
+                "time": "2024-05-30T09:52:06.000+00:00"
+            },
+            {
+                "userName": "User 2",
+                "remark": "test",
+                "display": "Form has been vetting by User 2",
+                "action": "Vetting",
+                "time": "2024-05-30T09:53:06.000+00:00"
+            },
+            {
+                "userName": "User 3",
+                "remark": "Reject reason is test",
+                "display": "Form has been data completeness by User 3",
+                "action": "Data Completeness",
+                "time": "2024-05-30T09:54:06.000+00:00"
+            }, 
+            {
+                "userName": "User 1",
+                "remark": "Test Resubmit to Vetting",
+                "display": "Form has been resubmit with required supplement by User 1",
+                "action": "Resubmit with required supplement",
+                "time": "2024-05-30T09:55:06.000+00:00"
+            }
+        ]
     }
 ]

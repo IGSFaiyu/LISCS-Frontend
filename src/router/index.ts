@@ -56,6 +56,12 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () => import("@/views/applications/newApplications.vue"),
       },
       {
+        path: "/editApplications",
+        // redirect: "noredirect",
+        meta: { hidden: true, title: "Edit Application", icon: "mdi-icon-file-document-outline" },
+        component: () => import("@/views/applications/newApplications.vue"),
+      },
+      {
         path: "/uploadPDFForm",
         name: "Upload PDF Form",
         component: () => import("@/views/applications/uploadPDFForm/index.vue"),
@@ -64,94 +70,33 @@ export const constantRoutes: RouteRecordRaw[] = [
     ],
   },
   {
-    path: "/mangement",
+    path: "/systemManagement",
     component: Layout,
-    redirect: "noredirect",
-    meta: { title: "Mangement", icon: "mdi-icon-file-chart-outline" },
+    redirect: "/systemManagement",
+    meta: { title: "Account Management", icon: "mdi-icon-cog-outline" },
     children: [
       {
-        path: "/",
-        redirect: "noredirect",
-        meta: { title: "Mangement", },
-        children: [
-          {
-            path: "/pendingList",
-            name: "Pending Approval List",
-            component: () => import("@/views/applicant/index.vue"),
-            meta: { title: "Pending Approval List", icon: "mdi-icon-file-document-plus-outline", },
-          },
-        ]
+        path: "/accountManagement",
+        name: "Account Management",
+        component: () => import("@/views/accountManagement/index.vue"),
+        meta: { title: "Account Management", icon: "mdi-icon-file-document-outline", },
       },
     ],
   },
-  {
-    path: "/setting",
-    component: Layout,
-    redirect: "noredirect",
-    meta: { title: "System Maintenance", icon: "mdi-icon-cog-outline" },
-    children: [
-      {
-        path: "/setting",
-        name: "setting",
-        component: () => import("@/views/setting/index.vue"),
-        meta: {
-          title: "General Setting", icon: "mdi-icon-menu"
-        },
-      },
-      // {
-      //   path: "/",
-      //   redirect: "/reasonForRejection",
-      //   meta: { title: "ReasonForRejection" },
-      //   children: [
-      //     {
-      //       path: "/reasonForRejection",
-      //       name: "reasonForRejection",
-      //       component: () => import("@/views/reasonForRejection/index.vue"),
-      //       meta: { title: "Reason For Rejection", icon: "el-icon-WarnTriangleFilled" },
-      //     },
-      //     {
-      //       path: "/addReason",
-      //       name: "addReason",
-      //       component: () =>
-      //         import("@/views/reasonForRejection/components/details.vue"),
-      //       meta: { hidden: true, title: "Add addReason" },
-      //     },
-      //     {
-      //       path: "/editReason",
-      //       name: "editReason",
-      //       component: () =>
-      //         import("@/views/reasonForRejection/components/details.vue"),
-      //       meta: { hidden: true, title: "Edit addReason" },
-      //     },
-      //   ],
-      // },
-      // {
-      //   path: "/internalUser",
-      //   redirect: "noredirect",
-      //   meta: { title: "Internal User", icon: "mdi-icon-account-multiple-outline" },
-      //   children: [
-      //     {
-      //       path: "/internalUserManagement",
-      //       name: "internalUserManagement",
-      //       component: () => import("@/views/internalUser/index.vue"),
-      //       meta: { title: "Internal User Management" },
-      //     },
-      //     {
-      //       path: "/editInternalUser",
-      //       name: "editInternalUser",
-      //       component: () => import("@/views/internalUser/components/details.vue"),
-      //       meta: { hidden: true, title: "Edit Internal User" },
-      //     },
-      //     {
-      //       path: "/addInternalUser",
-      //       name: "addInternalUser",
-      //       component: () => import("@/views/internalUser/components/details.vue"),
-      //       meta: { hidden: true, title: "Add Internal User" },
-      //     },
-      //   ],
-      // },
-    ],
-  },
+  // {
+  //   path: "/setting",
+  //   component: Layout,
+  //   redirect: "/setting",
+  //   meta: { title: "System Maintenance", icon: "mdi-icon-cog-outline" },
+  //   children: [
+  //     {
+  //       path: "/accountManagement",
+  //       name: "Account Management",
+  //       component: () => import("@/views/accountManagement/index.vue"),
+  //       meta: { title: "Account Management", icon: "mdi-icon-file-document-outline", },
+  //     },
+  //   ],
+  // },
 ];
 
 /**

@@ -26,9 +26,12 @@
 
 <script lang="js" setup>
 import { ref, onActivated } from "vue";
+import router from "@/router";
 import { FileUpload as TinyFileUpload, Modal } from '@opentiny/vue';
 import { iconFileupload } from '@opentiny/vue-icon';
+import {sortingData} from "../../../comon.ts";
 import { ElMessage } from "element-plus";
+import testData from "../../../assets/testData.json";
 
 const TinyIconFileupload = iconFileupload();
 
@@ -36,6 +39,12 @@ const fileList = ref([]);
 
 const submitPDF = ()=>{
   ElMessage.success('Success');
+  router.push({
+    path: "/editApplications",
+    state: {
+      applicationId: sortingData(testData, 'createdOn', false).filter(el=>el.submitType == 0 && el.internalStatus == 1)[0].applicationId,
+    },
+  });
 };
 
 const goBack = ()=>{

@@ -127,6 +127,7 @@ import { useRoute } from "vue-router";
 import statusCode from "../../../assets/statusCode.json";
 import dashboardColumns from "../../../assets/dashboardColumns.json";
 import submitType from "../../../assets/submitType.json";
+import * as common from "../../../comon";
 const route = useRoute();
 
 const { colGridRef, settingId, tableName, hideBoolCol, saveSetting } = tableComposable();
@@ -135,7 +136,7 @@ const props = defineProps({
   activeName: String,
 });
 
-const activeName = ref('All');
+const activeName = ref("All");
 const dashboardStatusOp = ref([
   { name: `All`, title: "All" },
   { name: `Draft`, title: "Draft" },
@@ -202,7 +203,7 @@ onActivated(async () => {
 });
 
 const initLoad = async () => {
-  activeName.value = route?.query?.activeName;
+  activeName.value = route?.query?.activeName ? route?.query?.activeName : "All";
 
   pageTitle.value = "Dashboard";
   await setColumnsType();
@@ -286,7 +287,7 @@ function handleEdit(data) {
   // 跳转至详情页 todo
   console.log("handle edit ---", data);
   router.push({
-    path: "/newApplications",
+    path: "/editApplications",
     state: {
       applicationId: data.applicationId,
     },

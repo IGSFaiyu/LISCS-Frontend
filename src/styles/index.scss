@@ -1,20 +1,21 @@
 @use "./reset";
 
-.app-container {
-  padding: 10px;
+// .app-container {
+// padding: 10px;
 
-  .page-title {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
+.page-title {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
 
-    .title {
-      font-size: 26px;
-      font-weight: 600;
-    }
+  .title {
+    font-size: 25px;
+    font-weight: 600;
   }
 }
+
+// }
 
 .el-scrollbar__wrap {
   height: calc(100vh - 100px) !important;
@@ -238,7 +239,7 @@
 
   &-title {
     font-size: 18px;
-    font-weight: 500;
+    font-weight: bold;
     line-height: 22px;
     flex-basis: 100%;
 
@@ -261,29 +262,56 @@
 }
 
 .form-info {
-  font-family: Roboto;
+  // font-family: Roboto;
   font-size: 14px;
   line-height: 22px;
   text-align: left;
 
   display: flex;
-  justify-content: space-around;
+  // justify-content: space-around;
   flex-wrap: wrap;
 
   &-content {
-    width: 45%;
+    width: 50%;
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     margin-top: 10px;
 
     &-label {
-      width: 50%;
+      margin-right: 15px;
       color: #000000;
     }
 
     &-value {
       color: #616f97;
     }
+  }
+}
+
+.statusBar {
+  display: flex;
+  flex-wrap: wrap;
+
+  .statusBall {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // color: #fff;
+  }
+
+  .statusArrow {
+    display: flex;
+    align-items: center;
+    margin: 0 5px;
+  }
+
+  .currentStatus {
+    background-color: #1976d2;
+    color: #fff;
   }
 }
 
@@ -363,4 +391,35 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+
+
+.customFormHistory{
+  width: 100%;
+  margin-top: 15px;
+
+
+  .historyBox{
+    border: 1px solid #ccc;
+    padding: 20px;
+  }
+
+  .historyHeader, .historyBody{
+    display: flex;
+  }
+
+  .historyTxtDiv{
+    border: 1px solid #ccc;
+    width: 25%;
+    // min-height: 30px;
+    display: flex;
+    padding: 7px;
+    
+  }
+  
+  .historyHeader .historyTxtDiv{
+    align-items: center;
+    justify-content: center;
+  }
 }

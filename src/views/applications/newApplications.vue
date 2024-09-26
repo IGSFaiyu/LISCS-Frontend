@@ -26,6 +26,28 @@
           </div>
         </section>
         <el-divider v-if="isSaved" />
+        <section>
+          <div class="page-title">
+            <span class="title" style="font-size: 20px">Form workflow</span>
+          </div>
+          <div class="statusBar">
+            <div style="display: flex" v-for="(item, index) in statusCode">
+              <div class="statusArrow" v-if="index > 0">
+                <tiny-icon-arrow-right class="tiny-svg-size icon-fileupload" />
+              </div>
+              <div
+                :class="
+                  `statusBall ${info2.filter(el=>el.label == 'internalStatus')[0].value == item?.label ? 'currentStatus' : ' test'}` 
+                "
+                :title="item.label"
+              >
+                {{ form?.value?.internalStatus }}
+                {{ item.value }}
+              </div>
+            </div>
+          </div>
+        </section>
+        <el-divider v-if="isSaved" />
         <section class="form-info" v-if="isSaved">
           <div v-for="item in info2" :key="item.id" class="form-info-content">
             <span class="form-info-content-label">{{ item.name + " :" }}</span>
@@ -69,8 +91,13 @@ import Applicant from "./components/applicant.vue";
 import Course from "./components/course.vue";
 import Choose from "./components/choose.vue";
 import Attachment from "./components/attachment.vue";
+import statusCode from "../../assets/statusCode.json";
 import { getApplicationInfo, getApplicantDetailApi } from "@/api/index";
+
+import { iconArrowRight } from '@opentiny/vue-icon';
 import router from "@/router";
+
+const TinyIconArrowRight = iconArrowRight();
 
 const info1 = ref([
   {

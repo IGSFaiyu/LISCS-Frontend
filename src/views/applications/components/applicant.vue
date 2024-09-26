@@ -289,7 +289,27 @@
             <el-input type="textarea" v-model="form.completenessComment"></el-input>
           </div>
         </div>
+        <div class="customFormHistory" v-if="form.history && form.history.length > 0">
+          <div class="custom-form-title">History</div>
+          <div class="historyBox">
+            <div class="historyHeader">
+              <div class="historyTxtDiv" style="width: 13%">User</div>
+              <div class="historyTxtDiv" style="width: 17%">Action Time</div>
+              <div class="historyTxtDiv" style="width: 40%">Action Detail</div>
+              <div class="historyTxtDiv" style="width: 40%">User Remark</div>
+            </div>
+            <div class="historyBody" v-for="item in form.history">
+              <div class="historyTxtDiv" style="width: 13%">{{ item.userName }}</div>
+              <div class="historyTxtDiv" style="width: 17%">
+                {{ timestampToTime(new Date(item.time), "YYYY-MM-DD hh:mm:ss") }}
+              </div>
+              <div class="historyTxtDiv" style="width: 40%">{{ item.display }}</div>
+              <div class="historyTxtDiv" style="width: 40%">{{ item.remark }}</div>
+            </div>
+          </div>
+        </div>
       </section>
+
       <div
         class="custom-form-button"
         style="margin-top: 15px"
@@ -381,6 +401,7 @@ import { ElMessage } from "element-plus";
 import PreviewFile from "@/components/PreView/index.vue";
 import * as common from "../../../comon";
 import router from "@/router";
+import { timestampToTime } from "@/utils/formatTime.js";
 
 const props = defineProps({
   type: String,
@@ -412,7 +433,7 @@ const assignUser = ref();
 
 const loading = ref(false);
 
-const form = ref({
+const defaultFormData ={
   id: null,
   applicationType: "Labour Importation Scheme for the Construction Sector Application Form",
   internalStatus: 0,
@@ -444,7 +465,11 @@ const form = ref({
   commercialDevelopmentContracts: "",
   applicantId: "",
   completenessComment: "",
-});
+  history: []
+}
+
+const form = ref(defaultFormData);
+
 
 const rules = ref({
   contractorName: {
@@ -601,46 +626,26 @@ const areaOptions = computed(() => {
   ];
 });
 
-onMounted(() => {
-  getBank();
-  getJobNature();
-  if(props.currentApplicationId) history.state.applicationId = props.currentApplicationId;
-  // if (history.state.applicantId) getApplicantInfoByApplicantIdFunction();
-  // if have application id
-  if (history.state.applicationId) {
-    applicationId.value = history.state.applicationId;
-    emit("changeIsSaved", true, applicationId.value); //后续删除
-    getApplicantInfo(applicationId.value);
-    getUploadedDocFunction(applicationId.value);
-  }
-  form.value.applicationType = type.value;
+onMounted(async() => {
+ await initData();
 });
 
-onActivated(() => {
-  // // console.log(history.state, "history state");
-  // getBank();
-  // getJobNature();
-  // if (history.state.applicantId) getApplicantInfoByApplicantIdFunction();
-  // // if have application id
-  // if (history.state.applicationId) {
-  //   applicationId.value = history.state.applicationId;
-  //   emit("changeIsSaved", true, applicationId.value); //后续删除
-  //   getApplicantInfo(applicationId.value);
-  //   getUploadedDocFunction(applicationId.value);
-  // }
+onActivated(async() => {
+  await initData();
+});
+
+const initData = async()=> {
   getBank();
   getJobNature();
-  if(props.currentApplicationId) history.state.applicationId = props.currentApplicationId;
-  // if (history.state.applicantId) getApplicantInfoByApplicantIdFunction();
-  // if have application id
+  // if(props.currentApplicationId) history.state.applicationId = props.currentApplicationId;
   if (history.state.applicationId) {
     applicationId.value = history.state.applicationId;
-    emit("changeIsSaved", true, applicationId.value); //后续删除
+    emit("changeIsSaved", true, applicationId.value);
     getApplicantInfo(applicationId.value);
     getUploadedDocFunction(applicationId.value);
   }
   form.value.applicationType = type.value;
-});
+}
 
 watch(applicationType, (newV) => {
   status.value = newV;
@@ -694,9 +699,7 @@ const handleSave = async (type) => {
         data.applicationId || applicationId.value
       );
       type === "save" && emit("changeIsSaved", true, data.applicationId);
-      router.push({
-        path: "/draftsList"
-      })
+      router.back();
     } else ElMessage.error(message);
   } catch (e) {
     ElMessage.error('message');
@@ -843,6 +846,8 @@ const changeBank = () => {
 };
 
 const clickCancel = () => {
+  form.value = defaultFormData;
+  router.back();
   emit("changeType");
 };
 
@@ -890,9 +895,7 @@ const handleApproval = async(type)=>{
   }
   let { code, data, message } = await approvalAndRejectForm(params);
   if (code === 200) {
-    router.push({
-    path: "/pendingList"
-  });
+    router.back();
   } else ElMessage.error(message);
 }
 
@@ -904,9 +907,7 @@ const handleAssign = async()=>{
     };
     let { code, data, message } = await approvalAndRejectForm(params);
     if (code === 200) {
-      router.push({
-        path: "/pendingList"
-      })
+      router.back();
     }
   }else ElMessage.error("Please select user");
 }
@@ -920,9 +921,7 @@ const handleComment = async()=>{
     };
     let { code, data, message } = await completenessCommentForm(params);
     if (code === 200) {
-      router.push({
-        path: "/pendingList"
-      })
+      router.back();
     }
   }else ElMessage.error("Please input Comment");
 }
