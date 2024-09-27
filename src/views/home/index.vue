@@ -216,13 +216,24 @@ const getSummary = async () => {
       summaryList.value = {
         belowOneQuarter: {
           ...data.belowOneQuarter,
-          total: Object.values(data.belowOneQuarter).reduce((sum, value) => sum + value, 0),
-          title: "Total(Below 1 Quarter)",
+          total: Object.values(data.belowOneQuarter).reduce(
+            (sum, value) => sum + value,
+            0
+          ),
+          title: "Nearly(Below 1 Quarter)",
         },
         belowTwoQuarter: {
           ...data.belowTwoQuarter,
-          total: Object.values(data.belowTwoQuarter).reduce((sum, value) => sum + value, 0),
-          title: "Total(Below 2 Quarter)",
+          total: Object.values(data.belowTwoQuarter).reduce(
+            (sum, value) => sum + value,
+            0
+          ),
+          title: "Nearly(Below 2 Quarter)",
+        },
+        all: {
+          ...data.all,
+          total: data.all.total,
+          title: "All",
         },
       };
     } else {
@@ -293,9 +304,9 @@ async function handleReset() {
 function handleEdit(data) {
   // 跳转至详情页
   router.push({
-    path: "/applicantDetails",
-    query: {
-      applicantId: data.applicantId,
+    path: "/editApplications",
+    state: {
+      applicationId: data.applicationId,
     },
   });
 }

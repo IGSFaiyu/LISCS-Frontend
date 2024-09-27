@@ -753,13 +753,13 @@
         "createdOn": "2024-05-30T09:50:06.000+00:00",
         "modifiedBy": 0,
         "modifiedOn": "2024-05-30T09:50:06.000+00:00",
-        "submitType": 1,
+        "submitType": 0,
         "files": "",
         "history": [
             {
                 "userName": "User 1",
                 "remark": "test",
-                "display": "Form has been save by User 1",
+                "display": "Form(PDF) has been save by User 1",
                 "action": "Save",
                 "time": "2024-05-30T09:50:06.000+00:00"
             }

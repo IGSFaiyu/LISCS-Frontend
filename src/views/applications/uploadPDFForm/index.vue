@@ -41,7 +41,7 @@ const submitPDF = ()=>{
   router.push({
     path: "/editApplications",
     state: {
-      applicationId: sortingData(testData, 'createdOn', false).filter(el=>el.submitType == 0 && el.internalStatus == 1)[0].applicationId,
+      applicationId: sortingData(testData, 'createdOn', false).filter(el=>el.submitType == 0 && el.internalStatus == 0)[0].applicationId,
     },
   });
 };

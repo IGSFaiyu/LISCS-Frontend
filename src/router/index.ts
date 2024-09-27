@@ -79,7 +79,14 @@ export const constantRoutes: RouteRecordRaw[] = [
         path: "/management",
         name: "Internal User Management",
         component: () => import("@/views/internalUser/index.vue"),
-        meta: { title: "Internal User Management", icon: "mdi-icon-file-document-outline", },
+        meta: { title: "Internal User Management", icon: "mdi-icon-cog-outline" },
+      },
+      {
+        path: "/quotaManagement",
+        name: "Quota Management",
+        component: () =>
+          import("@/views/setting/quotaManagement/index.vue"),
+        meta: { title: "Quota Management", icon: "mdi-icon-cog-outline" },
       },
       {
         path: "/editInternalUser",
@@ -87,7 +94,7 @@ export const constantRoutes: RouteRecordRaw[] = [
         component: () =>
           import("@/views/internalUser/components/details.vue"),
         meta: { hidden: true, title: "Edit Internal User" },
-      },
+      }
     ],
   },
   // {

@@ -78,11 +78,11 @@
   background-color: #fafafa;
 
   .tiny-grid-cell .tiny-grid-cell-text {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
+    font-size: 1.0rem;
+    line-height: 1.0rem;
     letter-spacing: 0.5px;
     color: #757575;
-    font-weight: 400;
+    font-weight: bold;
   }
 
   .tiny-grid-header__row {
@@ -90,9 +90,12 @@
   }
 
   .tiny-grid__body-wrapper {
-    font-size: 1.16rem;
+    font-size: 0.82rem;
     letter-spacing: 0.25px;
   }
+}
+.tiny-tabs__item__title{
+  color: #757575;
 }
 
 .tiny-scrollbar {

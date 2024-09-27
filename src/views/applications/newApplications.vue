@@ -239,14 +239,22 @@ const applicationType = ref("");
   console.log(newV, "watch");
 }); */
 
-onActivated(() => {
+onMounted(async () => {
+  await initLoad();
+});
+
+onActivated(async() => {
+  await initLoad();
+});
+
+const initLoad = async () => {
   // if have application id
   if (history.state.applicationId) {
     getApplicationInfoFunction(history.state.applicationId);
     isSaved.value = true;
     getApplicantDetail();
   }
-});
+};
 
 onDeactivated(() => {
   activeName.value = "applicant";

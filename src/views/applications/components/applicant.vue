@@ -273,13 +273,19 @@
           <div>
             <el-form-item
               class="custom-form-item width-100"
-              label="Value of the contract"
+              label="Select User"
               prop="assignUser"
             >
-              <el-radio-group style="width: 100%" v-model="assignUser">
+              <tiny-select
+                searchable
+                multiple
+                v-model="assignUser"
+                :options="allUsersOp"
+              />
+              <!-- <el-radio-group style="width: 100%" v-model="assignUser">
                 <el-radio style="width: 45%" value="User 1">User 1</el-radio>
                 <el-radio style="width: 45%" value="User 2">User 2</el-radio>
-              </el-radio-group>
+              </el-radio-group> -->
             </el-form-item>
           </div>
         </div>
@@ -375,6 +381,15 @@
           class="default-button btn-success"
           >Approval</el-button
         >
+
+        <el-button
+          v-if="[8].includes(form.internalStatus)"
+          type="primary"
+          @click="setEmailModal(true, 'Approval')"
+          class="default-button btn-secondary"
+          >Approved with special Condition</el-button
+        >
+
         <el-button
           v-if="[5, 10].includes(form.internalStatus)"
           type="primary"
@@ -386,10 +401,11 @@
         <el-button
           v-if="[1, 8].includes(form.internalStatus)"
           type="primary"
-          @click="openEmailTemplate = true"
+          @click="setEmailModal(true, 'Reject')"
           class="default-button btn-danger"
           >Reject</el-button
         >
+
         <el-button
           v-if="form.internalStatus == 4"
           type="primary"
@@ -400,10 +416,10 @@
         <el-button class="default-button cancel" @click="clickCancel">Cancel</el-button>
       </div>
       <tiny-modal
-        v-model="openEmailTemplate"
+        v-model="openEmailTemplate.open"
         type="confirm"
         show-footer
-        title="Reject Email"
+        :title="`${openEmailTemplate.type} Email`"
         @confirm="clickButton('reject')"
       >
         <div class="emailTemplate">
@@ -501,7 +517,15 @@ const applicationId = ref("");
 const fileRef = ref();
 const bankFileRef = ref();
 const cardFileRef = ref();
-const assignUser = ref();
+const assignUser = ref([]);
+const allUsersOp = ref([
+  {label: "Departmental 1", value: "Departmental 1"},
+  {label: "Departmental 2", value: "Departmental 2"},
+  {label: "Departmental 3", value: "Departmental 3"},
+  {label: "User 1", value: "User 1"},
+  {label: "User 2", value: "User 2"},
+  {label: "User 3", value: "User 3"},
+]);
 const emailTemplateOp = ref([
   {label: "Template 1", value: "Template 1"},
   {label: "Template 2", value: "Template 2"},
@@ -509,14 +533,10 @@ const emailTemplateOp = ref([
   {label: "Template 4", value: "Template 4"},
   {label: "Template 5", value: "Template 5"}
 ]);
-const openEmailTemplate = ref(false);
+const openEmailTemplate = ref({open: false, type: "Reject"});
 const emailTemplate = ref('Template 1');
-const emailSubject = ref(`Your form has been rejected`);
-const emailBody = ref(
-`Your form reject reason is :
-
-Please check your from information or more files.`
-);
+const emailSubject = ref(``);
+const emailBody = ref(``);
 
 const loading = ref(false);
 
@@ -1040,10 +1060,16 @@ const openFiles = (path)=>{
   window.open(location.origin + path);
 }
 
-// const openEmailTemplate =()=>{
-//   let modal = Modal.alert({ message: '成功提示框', status: 'success' });
-//   console.log(modal);
-// }
+const setEmailModal =(open, type)=>{
+  openEmailTemplate.value = { open: open, type: type };
+  type = type != 'Approval' ? 'rejected' : 'approved';
+  emailSubject.value = (`Your form has been ${type}`);
+  emailBody.value = (
+`Your form ${type} reason is :
+
+Please check your from information or more files.`
+  );
+}
 </script>
 
 <style lang="scss" scoped></style>

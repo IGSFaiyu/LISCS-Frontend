@@ -21,11 +21,15 @@ export function addSetting(data: any) {
 
 // 编辑
 export function updateSetting(data: any) {
-  return request({
-    url: `${SETTING_BASE_URL}/update`,
-    method: "patch",
-    data,
-  });
+  // return request({
+  //   url: `${SETTING_BASE_URL}/update`,
+  //   method: "patch",
+  //   data,
+  // });
+  return {
+    code: 200,
+    message: "Success"
+  }
 }
 
 // 获取详情

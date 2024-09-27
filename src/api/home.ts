@@ -18,16 +18,26 @@ export function getsummaryList() {
         "followUpAction": testData.filter(el => el.internalStatus == 6).length,
         "endorsed": testData.filter(el => el.internalStatus > 6 && el.internalStatus < 9).length,
         "rejected": testData.filter(el => el.internalStatus == 10).length,
-        "usedQuota": testData.filter(el => el.internalStatus == 9).length
+        "usedQuota": testData.filter(el => el.internalStatus == 9).length,
       },
       "belowTwoQuarter": {
+        "submitted": 2,
+        "processing": 5,
+        "followUpAction": 1,
+        "endorsed": 2,
+        "rejected": 50,
+        "usedQuota": 150
+      },
+      
+      "all": {
         "submitted": 0,
         "processing": 0,
         "followUpAction": 0,
         "endorsed": 0,
         "rejected": 50,
-        "usedQuota": 150
-      }
+        "usedQuota": "150/12000",
+        "total": 200
+      },
     },
     "message": "success"
   }
