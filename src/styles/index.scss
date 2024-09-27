@@ -292,26 +292,51 @@
   display: flex;
   flex-wrap: wrap;
 
-  .statusBall {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    // color: #fff;
-  }
-
-  .statusArrow {
+  .statusItems {
     display: flex;
     align-items: center;
-    margin: 0 5px;
-  }
 
-  .currentStatus {
-    background-color: #1976d2;
-    color: #fff;
+
+    .bigStatus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      padding: 0 5px;
+      height: 100%;
+      text-align: center;
+    }
+
+    &:has(.statusBall) {
+      height: 50px;
+    }
+
+    .statusBall {
+      &:first-of-type {
+        margin-left: 5px;
+      }
+
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 5px;
+    }
+
+    .statusArrow {
+      display: flex;
+      align-items: center;
+      margin: 0 5px;
+      width: 16px;
+    }
+
+    .currentStatus {
+      background-color: #1976d2;
+      color: #fff;
+    }
   }
 }
 
@@ -395,31 +420,65 @@
 
 
 
-.customFormHistory{
+.customFormHistory {
   width: 100%;
   margin-top: 15px;
 
 
-  .historyBox{
+  .historyBox {
     border: 1px solid #ccc;
     padding: 20px;
   }
 
-  .historyHeader, .historyBody{
+  .historyHeader,
+  .historyBody {
     display: flex;
   }
 
-  .historyTxtDiv{
+  .historyTxtDiv {
     border: 1px solid #ccc;
     width: 25%;
     // min-height: 30px;
     display: flex;
     padding: 7px;
-    
+
   }
-  
-  .historyHeader .historyTxtDiv{
+
+  .historyHeader .historyTxtDiv {
     align-items: center;
     justify-content: center;
+  }
+}
+
+.applicantFileUpload {
+  width: 100%;
+  margin-top: 15px;
+
+  .tiny-upload-dragger,
+  .tiny-upload-btn,
+  .tiny-upload {
+    width: 100% !important;
+  }
+
+  .lastFiles {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f5f7fa;
+    }
+
+    .lastFilesTxt {
+      margin-left: 15px;
+    }
+  }
+}
+
+.emailTemplate {
+  .emailInput {
+    textarea {
+      min-height: 120px !important;
+    }
   }
 }

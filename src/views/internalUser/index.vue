@@ -9,12 +9,12 @@
     <div class="page-title">
       <span class="title">Internal User Management</span>
 
-      <el-button type="primary" @click="handleManualSync">
+      <!-- <el-button type="primary" @click="handleManualSync">
         <el-icon>
           <Refresh />
         </el-icon>
         Manual Sync
-      </el-button>
+      </el-button> -->
     </div>
     <tiny-grid
       ref="colGridRef"
@@ -42,12 +42,7 @@
         :width="item.width"
       >
         <template #default="data">
-          <div
-            v-if="
-              data.row._$index_ === '1' &&
-              Object.keys(form).includes(item.value)
-            "
-          >
+          <div v-if="data.rowIndex === 0 && Object.keys(form).includes(item.value)">
             <tiny-input
               v-model="form[item.value]"
               placeholder="Search"
@@ -59,7 +54,7 @@
       </tiny-grid-column>
       <tiny-grid-column title="Action" align="center" width="90" fixed="right">
         <template #default="data">
-          <div v-if="data.row._$index_ !== '1'">
+          <div v-if="data.rowIndex !== 0">
             <span style="cursor: pointer" @click="handleEdit(data.row)">
               <img src="@/assets/images/edit.png" />
             </span>
@@ -100,8 +95,7 @@ import { ElMessage } from "element-plus";
 import { timestampToTime } from "@/utils/formatTime.js";
 import { tableComposable } from "@/composables/table.js";
 
-const { colGridRef, settingId, tableName, hideBoolCol, saveSetting } =
-  tableComposable();
+const { colGridRef, settingId, tableName, hideBoolCol, saveSetting } = tableComposable();
 
 const tableData = ref([]);
 
@@ -154,7 +148,7 @@ const form = ref({
   nameEng: "",
   nameChi: "",
   division: "",
-  roleDesc:"",
+  roleDesc: "",
 });
 
 const pager = ref({
@@ -165,7 +159,9 @@ const pager = ref({
 
 const sortColumn = ref("userId");
 const sortOrder = ref(0);
-const allColumns = ref("adName, emailAddress, nameEng, nameChi, division, roleDesc, modifiedOn, modifiedBySnap")
+const allColumns = ref(
+  "adName, emailAddress, nameEng, nameChi, division, roleDesc, modifiedOn, modifiedBySnap"
+);
 
 const isLoading = ref(false);
 const vLoading = Loading.directive;
@@ -199,12 +195,11 @@ async function getData() {
       });
       tableData.value = [{}, ...result];
       pager.value.total = data.totalElements;
-      settingId.value = data.view.settingId,
-      tableName.value = data.view.tableName,
-      hideBoolCol(
-        data.view.tableSetting === "*" ? allColumns.value : data.view.tableSetting
-      );
-     
+      (settingId.value = data.view.settingId),
+        (tableName.value = data.view.tableName),
+        hideBoolCol(
+          data.view.tableSetting === "*" ? allColumns.value : data.view.tableSetting
+        );
     } else {
       ElMessage.error(message);
     }
@@ -225,7 +220,7 @@ const sortChangeEvent = async ({ field, order }) => {
 };
 
 function handleChange(item, modelValue) {
-  console.log(item,modelValue)
+  console.log(item, modelValue);
   if (Object.keys(form.value).includes(item)) {
     form.value[item] = modelValue;
   }
@@ -239,7 +234,7 @@ function handleReset() {
     nameEng: "",
     nameChi: "",
     division: "",
-    roleDesc:"",
+    roleDesc: "",
   };
   getData();
 }

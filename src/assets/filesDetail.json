@@ -1,0 +1,28 @@
+[
+    {
+        "fileName": "test.pdf",
+        "filePath": "/files/application/13/test.pdf",
+        "fileSize": 1654832,
+        "createdBy": 0,
+        "createdOn": "2024-05-30T09:50:06.000+00:00",
+        "modifiedBy": 0,
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "deleted": false,
+        "createdBySnap": null,
+        "applicationId": 13,
+        "mimeType": "pdf"
+    },
+    {
+        "fileName": "test2.pdf",
+        "filePath": "/files/application/13/test2.pdf",
+        "fileSize": 1871872,
+        "createdBy": 0,
+        "createdOn": "2024-05-30T09:50:06.000+00:00",
+        "modifiedBy": 0,
+        "modifiedOn": "2024-05-30T09:50:06.000+00:00",
+        "deleted": false,
+        "createdBySnap": null,
+        "applicationId": 13,
+        "mimeType": "pdf"
+    }
+]

@@ -2,6 +2,7 @@ import request from "@/utils/request";
 import testData from "../assets/testData.json";
 import statusCode from "../assets/statusCode.json";
 import submitType from "../assets/submitType.json";
+import * as comon from "../comon";
 import { random } from "lodash";
 const APPLICATION_BASE_URL = "/application";
 const FILE_BASE_URL = "/application/file";
@@ -301,15 +302,6 @@ export function getApplicationList(params: any) {
   });
 }
 
-function sortingData(data, prop, isAsc) {
-  let haveData = data.filter(el => el[prop]);
-  let emptyData = data.filter(el => !el[prop]);
-  haveData = haveData.sort((a, b) => {
-    return (a[prop] < b[prop] ? -1 : 1) * (isAsc ? 1 : -1)
-  });
-  return [...haveData, ...emptyData];
-}
-
 // maritime list
 export function getMaritimeList(params: any) {
   return request({
@@ -420,12 +412,12 @@ export function getDashboard(data: any) {
   //   //   "Content-Type": "multipart/form-data",
   //   // },
   // });
-  let filterAry: any = getfliterAry(data);
-  let result = sortingData(testData, data.sortColumn, data.sortOrder).filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
+  let filterAry: any = comon.getfliterAry(data);
+  let result = comon.sortingData(testData, data.sortColumn, data.sortOrder).filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
   if (data.sortColumn == "applicantId"){
-    result = sortingData(result, "submitVersion", false);
+    result = comon.sortingData(result, "submitVersion", false);
   }
-  let pageable = getPageable(data, result);
+  let pageable = comon.getPageable(data, result);
   return {
     "code": 200,
     "data": {
@@ -435,48 +427,19 @@ export function getDashboard(data: any) {
   }
 }
 
-export function getfliterAry(data: any) {
-  let filterAry: any = [];
-  let notFilter = ["page", "size", "sortColumn", "sortOrder", "specStatus"];
-  for (let elem of Object.keys(data)) {
-    if (!notFilter.includes(elem)) {
-      if (["internalStatus", "submitType"].includes(elem)) {
-        filterAry.push(`(${data[elem]} == -1 || el['${elem}'] == ${data[elem]})`);
-      } else {
-        filterAry.push(`(!'${data[elem]}' || el['${elem}']?.toLowerCase().includes('${data[elem]?.toLowerCase()}'))`);
-      }
-    }else if(elem == "specStatus"){
-      filterAry.push(`([${data[elem]}].includes(el['internalStatus']))`);
+export function getToDoList(data: any) {
+  let filterAry: any = comon.getfliterAry(data);
+  let result = comon.sortingData(testData, data.sortColumn, data.sortOrder).filter(el => filterAry.length == 0 || eval(filterAry.join(" && ")));
+  if (data.sortColumn == "applicantId"){
+    result = comon.sortingData(result, "submitVersion", false);
+  }
+  result = result.filter(el=> [2].includes(el.internalStatus))
+  let pageable = comon.getPageable(data, result);
+  return {
+    "code": 200,
+    "data": {
+      ...pageable,
+      "content": result.slice(data.page * data.size, (data.page + 1) * data.size)
     }
   }
-  return filterAry;
-}
-
-export function getPageable(data: any, result: any) {
-  return {
-    "last": Math.ceil(result.length / data.size) == data.size + 1,
-    "size": data.size,
-    "numberOfElements": result.length,
-    "totalPages": Math.ceil(testData.length / data.size),
-    "pageable": {
-      "paged": true,
-      "pageNumber": data.page,
-      "offset": result.length - (result.length - (data.page * data.size)),
-      "pageSize": data.size,
-      "unpaged": false,
-      "sort": {
-        "unsorted": false,
-        "sorted": true,
-        "empty": false
-      }
-    },
-    "sort": {
-      "unsorted": false,
-      "sorted": true,
-      "empty": false
-    },
-    "first": false,
-    "totalElements": result.length,
-    "empty": false
-  };
 }

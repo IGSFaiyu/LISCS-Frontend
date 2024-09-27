@@ -112,8 +112,9 @@ let formData = ref({
 const routeName = ref(route.name);
 const roleOptions = ref([]);
 const divisionOptions = ref([
-  { label: "Aviation", value: "A" },
-  { label: "Maritime", value: "M" },
+  { label: "Admin", value: "A" },
+  { label: "Internal user", value: "I" },
+  { label: "External User", value: "E" },
 ]);
 onActivated(async () => {
   getRoleListData();

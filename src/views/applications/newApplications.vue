@@ -31,17 +31,59 @@
             <span class="title" style="font-size: 20px">Form workflow</span>
           </div>
           <div class="statusBar">
-            <div style="display: flex" v-for="(item, index) in statusCode">
-              <div class="statusArrow" v-if="index > 0">
+            <div class="statusItems">
+              <div
+                class="bigStatus"
+                :style="` width: 121px; background-color: ${getBigStatus(1).color};`"
+              >
+                <span>{{ getBigStatus(1).label }}</span>
+              </div>
+              <div
+                class="bigStatus"
+                :style="` width: 284px; background-color: ${getBigStatus(5).color};`"
+              >
+                <span>{{ getBigStatus(5).label }}</span>
+              </div>
+              <div
+                class="bigStatus"
+                :style="` width: 71px; background-color: ${getBigStatus(6).color};`"
+              >
+                <span>{{ getBigStatus(6).label }}</span>
+              </div>
+              <div
+                class="bigStatus"
+                :style="` width: 142px; background-color: ${getBigStatus(8).color};`"
+              >
+                <span>{{ getBigStatus(8).label }}</span>
+              </div>
+              <div
+                class="bigStatus"
+                :style="` width: 71px; background-color: ${getBigStatus(9).color};`"
+              >
+                <span>{{ getBigStatus(9).label }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="statusBar">
+            <div
+              class="statusItems"
+              v-for="(item, index) in statusCode"
+              :style="`background-color: ${getBigStatus(index).color}`"
+            >
+              <div class="statusArrow" v-if="index > 0 && item.value != 10">
                 <tiny-icon-arrow-right class="tiny-svg-size icon-fileupload" />
               </div>
               <div
-                :class="
-                  `statusBall ${info2.filter(el=>el.label == 'internalStatus')[0].value == item?.label ? 'currentStatus' : ' test'}` 
-                "
+                v-if="item.value != 10"
+                :class="`statusBall ${
+                  info2.filter((el) => el.label == 'internalStatus')[0].value ==
+                  item?.label
+                    ? 'currentStatus'
+                    : ' test'
+                }`"
                 :title="item.label"
               >
-                {{ form?.value?.internalStatus }}
                 {{ item.value }}
               </div>
             </div>
@@ -150,7 +192,7 @@ const info2 = ref([
   },
   {
     id: "7",
-    name: "submitType",
+    name: "Submit Type",
     value: "",
     label: "submitType",
   },
@@ -265,6 +307,23 @@ const changeIsSaved = (saved, applicationId) => {
   isSaved.value = saved;
   currentApplicationId.value = applicationId;
 };
+
+const getBigStatus=(index)=>{
+  let status = {label: '', color: ''};
+  if (index <2){
+    status = {label: 'Submitted',color: 'rgb(255 242 229)'};
+  }else if(index < 6){
+    status = {label: 'Processing',color: 'rgb(255 242 204)'};
+  }else if(index < 7){
+    // color = 'rgb(218 232 252)';
+    status = {label: 'Follow up action',color: 'rgb(225 213 231)'};
+  }else if(index < 9){
+    status = {label: 'Endorsed',color: 'rgb(205 235 139)'};
+  }else{
+    status = {label: 'Approved',color: 'rgb(215 241 242)'};
+  }
+  return status;
+}
 </script>
 
 <style lang="scss" scoped></style>

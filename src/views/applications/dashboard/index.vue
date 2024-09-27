@@ -128,6 +128,7 @@ import statusCode from "../../../assets/statusCode.json";
 import dashboardColumns from "../../../assets/dashboardColumns.json";
 import submitType from "../../../assets/submitType.json";
 import * as common from "../../../comon";
+import { filter } from "lodash-es";
 const route = useRoute();
 
 const { colGridRef, settingId, tableName, hideBoolCol, saveSetting } = tableComposable();
@@ -137,11 +138,17 @@ const props = defineProps({
 });
 
 const activeName = ref("All");
+// const dashboardStatusOp = ref([
+//   { name: `All`, title: "All" },
+//   { name: `Draft`, title: "Draft" },
+//   { name: `Pending Approval`, title: "Pending Approval" },
+//   { name: `Approved`, title: "Approved" },
+// ]);
 const dashboardStatusOp = ref([
   { name: `All`, title: "All" },
-  { name: `Draft`, title: "Draft" },
-  { name: `Pending Approval`, title: "Pending Approval" },
-  { name: `Approved`, title: "Approved" },
+  ...statusCode.map((item) => {
+    return { name: item.label, title: item.label };
+  }),
 ]);
 const activeOp = ref({
   Draft: [0],
@@ -230,7 +237,8 @@ const getData = async () => {
       sortOrder: sortOrder.value,
     };
     if (activeName.value != "All") {
-      params["specStatus"] = activeOp.value[activeName.value];
+      // params["specStatus"] = activeOp.value[activeName.value];
+      params["specStatus"] = statusCode.filter(el=> el.label ==  activeName.value)[0].value;
     }
 
     for (let elem of Object.keys(form.value)) {
@@ -339,9 +347,10 @@ const setColumnsType = async () => {
           options: [{ label: "All", value: "-1" }, ...submitType],
         };
       } else if (activeName.value != "All" && elem.value == "internalStatus") {
-        let newType = statusCode.filter((el) =>
-          activeOp.value[activeName.value].includes(el.value)
-        );
+        // let newType = statusCode.filter((el) =>
+        //   activeOp.value[activeName.value].includes(el.value)
+        // );
+        let newType = statusCode;
         form.value[elem.value] = {
           type: "select",
           val: "-1",

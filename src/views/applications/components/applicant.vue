@@ -283,12 +283,32 @@
             </el-form-item>
           </div>
         </div>
+
+        <div class="applicantFileUpload" v-if="[1, 5].includes(form.internalStatus)">
+          <div class="custom-form-title">Files Upload</div>
+          <tiny-file-upload drag multiple :auto-upload="false" :file-list="fileList">
+            <tiny-icon-fileupload
+              class="tiny-svg-size icon-fileupload"
+            ></tiny-icon-fileupload>
+          </tiny-file-upload>
+        </div>
+        <div class="applicantFileUpload" v-if="form.files.length > 0">
+          <div class="custom-form-title">Before uploaded files</div>
+          <div class="lastFiles" v-for="item in form.files">
+            <div @click="openFiles(item.filePath)">
+              <tiny-icon-file class="tiny-svg-size" />
+              <span class="lastFilesTxt">{{ item.fileName }}</span>
+            </div>
+          </div>
+        </div>
+
         <div v-if="form.internalStatus == 4" style="margin-top: 15px; width: 100%">
           Data Completeness Comment:
           <div>
             <el-input type="textarea" v-model="form.completenessComment"></el-input>
           </div>
         </div>
+
         <div class="customFormHistory" v-if="form.history && form.history.length > 0">
           <div class="custom-form-title">History</div>
           <div class="historyBox">
@@ -349,16 +369,24 @@
           >Assign</el-button
         >
         <el-button
-          v-if="[1, 4, 5, 6, 7, 8].includes(form.internalStatus)"
+          v-if="[1, 4, 6, 7, 8].includes(form.internalStatus)"
           type="primary"
           @click="clickButton('approval')"
           class="default-button btn-success"
           >Approval</el-button
         >
         <el-button
+          v-if="[5, 10].includes(form.internalStatus)"
+          type="primary"
+          @click="clickButton('approval')"
+          class="default-button btn-success"
+          >Resubmit</el-button
+        >
+
+        <el-button
           v-if="[1, 8].includes(form.internalStatus)"
           type="primary"
-          @click="clickButton('reject')"
+          @click="openEmailTemplate = true"
           class="default-button btn-danger"
           >Reject</el-button
         >
@@ -371,6 +399,40 @@
         >
         <el-button class="default-button cancel" @click="clickCancel">Cancel</el-button>
       </div>
+      <tiny-modal
+        v-model="openEmailTemplate"
+        type="confirm"
+        show-footer
+        title="Reject Email"
+        @confirm="clickButton('reject')"
+      >
+        <div class="emailTemplate">
+          <el-form-item
+            class="custom-form-item"
+            style="width: 100%"
+            label="Email Template"
+            prop="emailTemplate"
+          >
+            <tiny-select v-model="emailTemplate" :options="emailTemplateOp" />
+          </el-form-item>
+          <el-form-item
+            class="custom-form-item"
+            style="width: 100%"
+            label="Email Subject"
+            prop="emailSub"
+          >
+            <el-input v-model="emailSubject" />
+          </el-form-item>
+          <el-form-item
+            class="custom-form-item"
+            style="width: 100%"
+            label="Email Body"
+            prop="emailSub"
+          >
+            <el-input class="emailInput" v-model="emailBody" type="textarea" />
+          </el-form-item>
+        </div>
+      </tiny-modal>
     </el-form>
   </div>
 </template>
@@ -402,6 +464,16 @@ import PreviewFile from "@/components/PreView/index.vue";
 import * as common from "../../../comon";
 import router from "@/router";
 import { timestampToTime } from "@/utils/formatTime.js";
+import { iconFileupload, iconFile } from '@opentiny/vue-icon';
+import {
+  FileUpload as TinyFileUpload,
+  Modal as TinyModal,
+  Select as TinySelect
+} from '@opentiny/vue';
+
+const TinyIconFileupload = iconFileupload();
+const TinyIconFile = iconFile();
+
 
 const props = defineProps({
   type: String,
@@ -430,6 +502,21 @@ const fileRef = ref();
 const bankFileRef = ref();
 const cardFileRef = ref();
 const assignUser = ref();
+const emailTemplateOp = ref([
+  {label: "Template 1", value: "Template 1"},
+  {label: "Template 2", value: "Template 2"},
+  {label: "Template 3", value: "Template 3"},
+  {label: "Template 4", value: "Template 4"},
+  {label: "Template 5", value: "Template 5"}
+]);
+const openEmailTemplate = ref(false);
+const emailTemplate = ref('Template 1');
+const emailSubject = ref(`Your form has been rejected`);
+const emailBody = ref(
+`Your form reject reason is :
+
+Please check your from information or more files.`
+);
 
 const loading = ref(false);
 
@@ -465,7 +552,8 @@ const defaultFormData ={
   commercialDevelopmentContracts: "",
   applicantId: "",
   completenessComment: "",
-  history: []
+  history: [],
+  files: []
 }
 
 const form = ref(defaultFormData);
@@ -947,6 +1035,15 @@ const autoFill = ()=>{
   form.value.targetCompletionDate = new Date().toISOString().slice(0,10);
   event.preventDefault();
 }
+
+const openFiles = (path)=>{
+  window.open(location.origin + path);
+}
+
+// const openEmailTemplate =()=>{
+//   let modal = Modal.alert({ message: '成功提示框', status: 'success' });
+//   console.log(modal);
+// }
 </script>
 
 <style lang="scss" scoped></style>

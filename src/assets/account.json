@@ -1,0 +1,21 @@
+[
+    {
+        "roleId": 7,
+        "modifiedBy": 30,
+        "deleted": false,
+        "createdBySnap": null,
+        "createdOn": "2024-08-01T03:31:21.000+00:00",
+        "roleDesc": "Payment Preparer",
+        "adName": "admin",
+        "userId": 1,
+        "nameChi": "admin",
+        "division": "A,M",
+        "modifiedBySnap": "admin(admin)",
+        "createdBy": 0,
+        "nameEng": "admin",
+        "emailAddress": "admin@liscs.gov.hk",
+        "modifiedOn": "2024-08-22T02:07:49.000+00:00",
+        "post": "admin",
+        "isAdmin": false
+    }
+]

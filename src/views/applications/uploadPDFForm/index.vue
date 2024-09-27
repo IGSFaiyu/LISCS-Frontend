@@ -5,7 +5,6 @@
     </div>
     <tiny-file-upload
       drag
-      multiple
       accept=".pdf"
       :auto-upload="false"
       :file-list="fileList"

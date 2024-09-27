@@ -73,13 +73,20 @@ export const constantRoutes: RouteRecordRaw[] = [
     path: "/systemManagement",
     component: Layout,
     redirect: "/systemManagement",
-    meta: { title: "Account Management", icon: "mdi-icon-cog-outline" },
+    meta: { title: "System Management", icon: "mdi-icon-cog-outline" },
     children: [
       {
-        path: "/accountManagement",
-        name: "Account Management",
-        component: () => import("@/views/accountManagement/index.vue"),
-        meta: { title: "Account Management", icon: "mdi-icon-file-document-outline", },
+        path: "/management",
+        name: "Internal User Management",
+        component: () => import("@/views/internalUser/index.vue"),
+        meta: { title: "Internal User Management", icon: "mdi-icon-file-document-outline", },
+      },
+      {
+        path: "/editInternalUser",
+        name: "editInternalUser",
+        component: () =>
+          import("@/views/internalUser/components/details.vue"),
+        meta: { hidden: true, title: "Edit Internal User" },
       },
     ],
   },
